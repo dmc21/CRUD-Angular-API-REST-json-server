@@ -7,6 +7,8 @@ import { Movies } from '../../modelos/movies';
 
 import { ConexApiMoviesService } from '../../servicios/conex-api-movies.service';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-edit-movies',
   templateUrl: './edit-movies.component.html',
@@ -19,7 +21,8 @@ export class EditMoviesComponent implements OnInit {
   constructor(
     private moviesService: ConexApiMoviesService,
     private router: ActivatedRoute,
-    private routerR: Router
+    private routerR: Router,
+    private toast: ToastrService
     ) { }
 
   ngOnInit() {
@@ -33,6 +36,11 @@ export class EditMoviesComponent implements OnInit {
     this.moviesService.updateMovie(this.movie).subscribe(data => {
     });
     movie.resetForm();
+    this.routerR.navigate(['']);
+    this.toast.success('Actualizado con éxito', 'Actualización');
+  }
+
+  volver(){
     this.routerR.navigate(['']);
   }
 

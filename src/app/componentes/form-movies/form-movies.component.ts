@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms';
 
 import { Movies } from '../../modelos/movies';
 
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-form-movies',
   templateUrl: './form-movies.component.html',
@@ -13,7 +14,10 @@ import { Movies } from '../../modelos/movies';
 })
 export class FormMoviesComponent implements OnInit {
 
-  constructor(private moviesService: ConexApiMoviesService) { }
+  constructor(
+    private moviesService: ConexApiMoviesService,
+    private toast: ToastrService
+    ) { }
 
   modelMovies = new Movies();
 
@@ -42,6 +46,7 @@ export class FormMoviesComponent implements OnInit {
       this.movies.push(data as Movies);
     });
     form.resetForm();
+    this.toast.success('Insertado con éxito', 'Inserción');
   }
 
   deleteMovie(id){
@@ -57,5 +62,6 @@ export class FormMoviesComponent implements OnInit {
         }
       });
     } 
+    this.toast.success('Eliminado con éxito', 'Eliminación');
   }
 }
