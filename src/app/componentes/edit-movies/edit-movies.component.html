@@ -1,0 +1,20 @@
+<h1>Panel de edición de películas</h1>
+
+<form #myForm="ngForm" (ngSubmit)="updateMovie(myForm)">
+  <input type="hidden" name="id" [(ngModel)]="movie.id">
+  <div class="form-group">
+    <label for="nombre">Nombre: </label>
+    <input type="text" name="nombre" [(ngModel)]="movie.nombre" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="director">Director: </label>
+    <input type="text" name="director" [(ngModel)]="movie.director" class="form-control">
+  </div>
+    <div class="form-group">
+      <label for="clasificacion">Clasificación: </label>
+      <input type="text" name="clasificacion" [(ngModel)]="movie.clasificacion" class="form-control">
+    </div>
+    <div class="form-group">
+      <input type="submit" value="Editar" class="btn btn-success">
+    </div>
+</form>
