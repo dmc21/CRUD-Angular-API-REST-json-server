@@ -7,6 +7,8 @@ import { NgForm } from '@angular/forms';
 import { Movies } from '../../modelos/movies';
 
 import { ToastrService } from 'ngx-toastr';
+
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-form-movies',
   templateUrl: './form-movies.component.html',
@@ -16,7 +18,8 @@ export class FormMoviesComponent implements OnInit {
 
   constructor(
     private moviesService: ConexApiMoviesService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private router: Router
     ) { }
 
   modelMovies = new Movies();
@@ -24,7 +27,12 @@ export class FormMoviesComponent implements OnInit {
   movies: Movies[];
 
   ngOnInit() {
-    this.getMovies();
+    
+    if(localStorage.getItem('user-loged') == undefined){
+      this.router.navigate(['/']);
+    }else{
+      this.getMovies();
+    }
   }
 
 
@@ -63,5 +71,10 @@ export class FormMoviesComponent implements OnInit {
       });
     } 
     this.toast.success('Eliminado con éxito', 'Eliminación');
+  }
+
+  cerrarSesion(){
+    localStorage.removeItem('user-loged');
+    this.router.navigate(['']);
   }
 }

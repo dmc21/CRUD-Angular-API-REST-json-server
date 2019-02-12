@@ -1,4 +1,5 @@
 
+  <button class="btn btn-danger" (click)="cerrarSesion()">Cerrar Sesión</button>
   <h1>Inserción de películas</h1>
   <form #myForm="ngForm" (ngSubmit)="insertMovie($event, myForm)">
     <input type="hidden" ngModel name="id" value="8">

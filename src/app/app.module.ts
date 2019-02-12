@@ -11,21 +11,25 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { FormsModule } from '@angular/forms';
 
+import { ToastrModule } from 'ngx-toastr';
+import { LoginComponent } from './componentes/login/login.component';
+
 import { HttpClientModule } from '@angular/common/http';
 
-import { ToastrModule } from 'ngx-toastr';
 
 
 const routes: Routes = [
-  {path: '', component: FormMoviesComponent},
-  {path:'editar/:id', component: EditMoviesComponent}
+  {path: '', component: LoginComponent},
+  {path: 'admin', component: FormMoviesComponent},
+  {path:'admin/editar/:id', component: EditMoviesComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     EditMoviesComponent,
-    FormMoviesComponent
+    FormMoviesComponent,
+    LoginComponent
     ],
   imports: [
     BrowserModule,
