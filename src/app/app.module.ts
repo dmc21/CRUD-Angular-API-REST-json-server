@@ -21,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'admin', component: FormMoviesComponent},
-  {path:'admin/editar/:id', component: EditMoviesComponent}
+  {path:'admin/editar/:id', component: EditMoviesComponent},
+  {path: '**', redirectTo: '/'}
 ];
 
 @NgModule({

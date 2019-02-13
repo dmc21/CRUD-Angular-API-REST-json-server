@@ -26,10 +26,14 @@ export class EditMoviesComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-   let id =  this.router.snapshot.paramMap.get('id');
-   this.moviesService.getForId(id).subscribe(data =>{
-     this.movie = data;
-    });
+    if(localStorage.getItem('user-loged') != undefined){
+      let id =  this.router.snapshot.paramMap.get('id');
+      this.moviesService.getForId(id).subscribe(data =>{
+        this.movie = data;
+        });
+  }else{
+    this.routerR.navigate(['/']);
+  }
   }
 
   updateMovie(movie: NgForm){
