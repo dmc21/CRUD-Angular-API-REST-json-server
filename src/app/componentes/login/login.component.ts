@@ -9,6 +9,8 @@ import { User } from '../../modelos/user';
 import { NgForm } from '@angular/forms';
 
 import { Router } from '@angular/router';
+
+import { ToastrService } from 'ngx-toastr';
  
 
 
@@ -21,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   myUser: User[];
 
-  constructor(private login: LoginService, private router: Router) { }
+  constructor(private login: LoginService, private router: Router, private toast:ToastrService) { }
 
   ngOnInit() {
     if (localStorage.getItem('user-loged') != undefined){
@@ -36,7 +38,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('user-loged', JSON.stringify(data));
         this.router.navigate(['admin']);
       }else{
-        console.log('se siente...');
+        this.toast.error('Usuario o contraseña incorrectos','Error Login');
       }
     });
   }
