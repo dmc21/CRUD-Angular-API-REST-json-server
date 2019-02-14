@@ -34,8 +34,9 @@ export class LoginComponent implements OnInit {
   confirmLogin(formLogin: NgForm){
 
     this.login.confirmUser(formLogin.value.nickForm,formLogin.value.passForm).subscribe(data => {
+
       if(Object.keys(data).length == 1){
-        localStorage.setItem('user-loged', JSON.stringify(data));
+        localStorage.setItem('user-loged', formLogin.value.nickForm);
         this.router.navigate(['admin']);
       }else{
         this.toast.error('Usuario o contraseña incorrectos','Error Login');

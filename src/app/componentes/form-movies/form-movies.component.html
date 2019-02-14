@@ -1,28 +1,43 @@
+<div class="row">
+  <div class="col-md-8">
+    <h1>Inserción de películas</h1>
+    <form #myForm="ngForm" (ngSubmit)="insertMovie($event, myForm)">
+      <input type="hidden" ngModel name="id" value="8">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" [(ngModel)]="modelMovies.nombre" name="nombre">
+      </div>
+      <div class="form-group">
+        <label for="director">Director:</label>
+        <input type="text" class="form-control" [(ngModel)]="modelMovies.director" name="director">
+      </div>
+      <div class="form-group">
+        <label for="clasificacion">Clasificación:</label>
+        <input type="text" class="form-control" [(ngModel)]="modelMovies.clasificacion" name="clasificacion">
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Insertar" class="btn btn-success mr-2">
+        <input type="reset" value="Restablecer" class="btn btn-danger">
+      </div>
+    </form>
+  </div>
+  <div class="col-md-4 margin-top">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">
+          <h5>Perfil de usuario {{ user }}</h5>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tellus libero, volutpat ac leo id,
+          convallis mattis sem.</p>
+        <button class="btn btn-danger" (click)="cerrarSesion()">Cerrar Sesión</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <button class="btn btn-danger" (click)="cerrarSesion()">Cerrar Sesión</button>
-  <h1>Inserción de películas</h1>
-  <form #myForm="ngForm" (ngSubmit)="insertMovie($event, myForm)">
-    <input type="hidden" ngModel name="id" value="8">
-    <div class="form-group">
-      <label for="nombre">Nombre:</label>
-      <input type="text" class="form-control" [(ngModel)]="modelMovies.nombre" name="nombre">
-    </div>
-    <div class="form-group">
-      <label for="director">Director:</label>
-      <input type="text" class="form-control" [(ngModel)]="modelMovies.director" name="director">
-    </div>
-    <div class="form-group">
-      <label for="clasificacion">Clasificación:</label>
-      <input type="text" class="form-control" [(ngModel)]="modelMovies.clasificacion" name="clasificacion">
-    </div>
-    <div class="form-group">
-      <input type="submit" value="Insertar" class="btn btn-success mr-2">
-      <input type="reset" value="Restablecer" class="btn btn-danger">
-    </div>
-  </form>
-
-
-  <table class="table table-hover">
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-hover">
       <tr>
         <th>Nombre</th>
         <th>Director</th>
@@ -38,5 +53,5 @@
         <td><button (click)="deleteMovie(movie.id)" class="btn btn-danger">Eliminar</button></td>
       </tr>
     </table>
-
-
+  </div>
+</div>

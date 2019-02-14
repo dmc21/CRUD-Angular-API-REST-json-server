@@ -8,6 +8,8 @@ import { Movies } from '../../modelos/movies';
 
 import { ToastrService } from 'ngx-toastr';
 
+import { User } from '../../modelos/user';
+
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-form-movies',
@@ -26,12 +28,15 @@ export class FormMoviesComponent implements OnInit {
 
   movies: Movies[];
 
+  user: string;
+
   ngOnInit() {
     
     if(localStorage.getItem('user-loged') == undefined){
       this.router.navigate(['/']);
     }else{
       this.getMovies();
+      this.user = localStorage.getItem('user-loged');
     }
   }
 
@@ -69,8 +74,8 @@ export class FormMoviesComponent implements OnInit {
           }
         }
       });
+      this.toast.success('Eliminado con éxito', 'Eliminación');
     } 
-    this.toast.success('Eliminado con éxito', 'Eliminación');
   }
 
   cerrarSesion(){
